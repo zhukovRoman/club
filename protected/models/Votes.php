@@ -96,7 +96,7 @@ class Votes extends CActiveRecord
         }
            public function getCount($vote_id)
         {
-           $vote = Votes::model()->find("vote_id=:vid", 
+           $vote = Votes::model()->findAll("vote_id=:vid", 
                     array("vid"=>$vote_id));
            return count($vote);
            

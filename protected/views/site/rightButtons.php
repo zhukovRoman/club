@@ -11,7 +11,7 @@
     <div class="btn-group btn-group-vertical" style="display: block; margin: 10px 0px;">
         <?php
         $this->widget('bootstrap.widgets.TbButton', array(
-            'type' => 'info',
+            'type' => 'action',
             'label' => 'Проекты клуба',
             'block' => true,
             //'url' => Yii::app()->createUrl('site/page', array('view' => 'programs')),
@@ -24,7 +24,7 @@
         <div id="proj" style="display: <?php echo $current; ?> ;">
             <?php
             $this->widget('bootstrap.widgets.TbButton', array(
-                'type' => 'action',
+                'type' => ($_GET['view']=='grand')?'info':'action',
                 'label' => 'Стипендия',
                 'block' => true,
                 'url' => Yii::app()->createUrl('site/pageview', array('view' => 'grand')),
@@ -32,7 +32,7 @@
             ?>
             <?php
             $this->widget('bootstrap.widgets.TbButton', array(
-                'type' => 'action',
+                'type' => ($_GET['view']=='gifts')?'info':'action',
                 'label' => 'Поддержка кафедры',
                 'block' => true,
                 'url' => Yii::app()->createUrl('site/pageview', array('view' => 'gifts')),
@@ -40,7 +40,7 @@
             ?>
             <?php
             $this->widget('bootstrap.widgets.TbButton', array(
-                'type' => 'action',
+                'type' => ($_GET['view']=='meeting')?'info':'action',
                 'label' => 'Встречи',
                 'block' => true,
                 'url' => Yii::app()->createUrl('site/pageview', array('view' => 'meeting')),
