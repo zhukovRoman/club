@@ -24,11 +24,11 @@ class AlumniController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'SingUp', 'Passrecovery'),
+                'actions' => array('index', 'view', 'SingUp','list', 'Passrecovery'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('list', 'EditProfile', 'ChangeFaculty', 'changePass', 'uploadAvatar', 'upload', "History",'profile'),
+                'actions' => array( 'EditProfile', 'ChangeFaculty', 'changePass', 'uploadAvatar', 'upload', "History",'profile'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -276,9 +276,11 @@ class AlumniController extends Controller {
         // To send HTML mail, the Content-type header must be set
         $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-
+        $headers .= 'Reply-To: no-reply@bmstuclub.org' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion(). "\r\n" ;
+        $headers .= "To: <$model->mail> " . "\r\n";
         // Additional headers
-        $headers .= 'From: ' . Yii::app()->name . ' <zhrovl@gmail.com>' . "\r\n";
+        $headers .= 'From: ' . Yii::app()->name . ' <no-reply@bmstuclub.org>' . "\r\n";
 
         // Отправляем письмо 
         mail($to, $subject, $message, $headers);
@@ -328,6 +330,7 @@ class AlumniController extends Controller {
         $criteria = new CDbCriteria;
         $status = Alumni::ACTIVATE_STATUS;
         $criteria->order = 'surname, name, forename   DESC';
+        $criteria->addCondition("name!=''");
         $criteria->addCondition("status=$status");
         //$criteria->addCondition("time_add > now() - interval $d day");
         if ($faculty != 0) {

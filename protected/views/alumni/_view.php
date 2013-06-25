@@ -14,7 +14,7 @@
         <?php echo CHtml::encode("Кафедра: ".$data->department->name); ?>
         <br><?php echo CHtml::encode("Год выпуска: $data->year");?>
         <br><?php echo CHtml::encode("$data->workplace");?>
-        <br><?php echo CHtml::encode("$data->mail"); ?>
+        <br><?php echo CHtml::encode("$data->contact_mail"); ?>
         <br><?php // echo CHtml::encode("Телефон: 2010");?>
         
     </div>

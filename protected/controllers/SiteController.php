@@ -25,12 +25,12 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        if (Yii::app()->user->isGuest)
-            $this->render('guestIndex');
-        else {
+//        if (Yii::app()->user->isGuest)
+//            $this->render('guestIndex');
+//        else {
 
             $this->render('index', array('news' => News::getLast(),));
-        }
+//        }
     }
 
     public function actionPageView($view) {
@@ -111,6 +111,7 @@ class SiteController extends Controller {
         $this->loginform = false;
 
         if (isset($_POST['LoginForm'])) {
+            print_r($_POST);
             $model->attributes = $_POST['LoginForm'];
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login()) {

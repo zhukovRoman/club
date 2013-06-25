@@ -1,7 +1,7 @@
 <div class="span4 content-border faculty-list-item list-item">
     
     <div class="faculti-list-item-content">
-        <img src="http://placehold.it/100x100&text=<?php echo $data->name;?>" 
+        <img src="/img/faculty/<?php echo $data->Id;?>.jpg" 
              class ="content-border pull-left">
         <div class="faculti-list-item-name pull-right">
                 <?php echo CHtml::encode($data->name);?>
@@ -16,13 +16,14 @@
                             array('faculty'=>$data->Id)
                             )
                     );?>
+<!--            
             <?php echo CHtml::link("Потребности", 
                     Yii::app()->createUrl(
                             'gift/list', 
                             array('faculty'=>$data->Id)
                             )
                     );?>
-        </div>
+        --></div>
     </div>
    
 

@@ -20,31 +20,23 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 
 <?php echo $form->errorSummary($model); ?>
-
+<h3>Личная информация:</h3>
+<hr>
+    
 <?php echo $form->textFieldRow($model, 'surname', array('class' => 'span5', 'maxlength' => 100)); ?>
 
 <?php echo $form->textFieldRow($model, 'name', array('class' => 'span5', 'maxlength' => 100)); ?>
 
 <?php echo $form->textFieldRow($model, 'forename', array('class' => 'span5', 'maxlength' => 100)); ?>
+
+<h3>Информация об обучении:</h3>
+<hr>
 <?php echo $form->textFieldRow($model, 'year', array('class' => 'span3', 'maxlength' => 4)); ?>
 
-<?php echo $form->textFieldRow($model, 'workplace', array('class' => 'span5', 'maxlength' => 250)); ?>
+
 
 <?php //echo $form->textFieldRow($model, 'mobile', array('class' => 'span5', 'maxlength' => 25));  ?>
-<div class="control-group">
-    <label class="control-label"> <?php echo $model->getAttributeLabel('mobile'); ?></label>
-    <div class="controls">	 
-        <span id ="dateselect">
-            <?php
-            $this->widget('CMaskedTextField', array(
-                'model' => $model,
-                'attribute' => 'mobile',
-                'mask' => '+7(999)999-9999',
-            ));
-            ?> 
-        </span>
-    </div>
-</div>
+
 
 <?php
 echo $form->dropDownListRow($model, 'facultyId', Faculty::getFaculties(),
@@ -63,7 +55,26 @@ $currentFac = ($model->facultyId==NUll)? 1 : $model->facultyId;
 echo $form->dropDownListRow($model, 'departmentID', Department::getDepartmentsOfFacultyForForm($currentFac));
 ?>
 
+<h3>Контактная информация</h3>
+<hr>
+<p style="color: gray;">Внимание! Данная информация будет доступна всем членам клуба.</p>
+<div class="control-group">
+    <label class="control-label"> <?php echo $model->getAttributeLabel('mobile'); ?></label>
+    <div class="controls">	 
+        <span id ="dateselect">
+            <?php
+            $this->widget('CMaskedTextField', array(
+                'model' => $model,
+                'attribute' => 'mobile',
+                'mask' => '+7(999)999-9999',
+            ));
+            ?> 
+        </span>
+    </div>
+</div>
 
+<?php echo $form->textFieldRow($model, 'workplace', array('class' => 'span5', 'maxlength' => 250)); ?>
+<?php echo $form->textFieldRow($model, 'contact_mail', array('class' => 'span5', 'maxlength' => 250)); ?>
 
 <?php
 $this->widget('bootstrap.widgets.TbButton', array(

@@ -1,7 +1,8 @@
 
 <div id="result">
-    Эту идею поддержало: 
+    <h5> <i>Эту идею поддержало: 
     <?php echo " <span id='cnt'>".Votes::getCount($vote_id)."</span>"; ?>
+        </i></h5>
 </div>  
 <?php
 if ((!Yii::app()->user->isGuest) && !Votes::alreadyVote($vote_id)) {
@@ -10,7 +11,6 @@ if ((!Yii::app()->user->isGuest) && !Votes::alreadyVote($vote_id)) {
         'type' => 'warning',
         'label' => 'Поддержать идею!',
         'url' => '#',
-        
         'htmlOptions' => array('onClick' => "js:vote('$vote_id')",'id'=>'vote_btn',),
     ));
 }

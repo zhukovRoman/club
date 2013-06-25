@@ -60,12 +60,12 @@ class Alumni extends CActiveRecord {
         return array(
             
             //сценарий редактирования 
-            array('name, forename, surname,departmentID,year,facultyId', 'required', 'on' => array(self::SCENARIO_UPDATE)),
+            array('name, surname,departmentID,year,facultyId', 'required', 'on' => array(self::SCENARIO_UPDATE)),
             array('name, forename, surname, diplomId', 'length', 'max' => 100, 'min' => 3),
             array('workplace', 'length', 'max' => 250),
             array('mobile', 'length', 'max' => 25),
             array('year','length', 'max'=>4, 'min'=>4),
-            array('name, forename, surname,departmentID,year,workplace,facultyId', 'safe', 'on'=>array(self::SCENARIO_UPDATE)),
+            array('name, forename, surname,departmentID,year,workplace,facultyId,contact_mail', 'safe', 'on'=>array(self::SCENARIO_UPDATE)),
             //сценарий реги и забытия пароля
             array('pass, mail', 'required', 'on' => array(self::SCENARIO_SIGNUP)),
             array('pass, mail, diplomId', 'safe', 'on' => array(self::SCENARIO_SIGNUP)),
@@ -143,6 +143,7 @@ class Alumni extends CActiveRecord {
             'mail' => 'E-mail',
             'newpass' => "Новый пароль",
             'oldpass' => "Старый пароль",
+            'contact_mail'=> "Контакная почта",
         );
     }
 

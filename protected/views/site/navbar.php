@@ -13,10 +13,13 @@ $items = array(
 if (!Yii::app()->user->isGuest) {
     $items = array(
         array('label' => 'Кабинет', 'items' => array(
-                array('label' => 'Профиль', 'url' => Yii::app()->createUrl("alumni/profile")
+                array('label' => 'Профиль', 'url' => Yii::app()->createUrl("alumni/profile"),
+                
                 ),
-                array('label' => 'История', 'url' => Yii::app()->createUrl("gift/History")),
+                //array('label' => 'История', 'url' => Yii::app()->createUrl("gift/History")),
                 //array('label' => 'Ваша кафедра', 'url' => '#'),
+                array('label' => 'Мои истории', 'url' => Yii::app()->createUrl("career/list", 
+                            array('alumni_id'=>Yii::app()->user->getId()))),   
                 '---',
                 array('label' => 'Выход', 'url' => '#'),
         )),
@@ -25,7 +28,7 @@ if (!Yii::app()->user->isGuest) {
     );
     $f = "Новости";
 }
-
+$f="Новости";
 $this->widget('bootstrap.widgets.TbNavbar', array(
     //'type'=>'inverse', // null or 'inverse'
     'fixed' =>  false,
@@ -38,8 +41,8 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'class' => 'bootstrap.widgets.TbMenu',
             'items' => array(
                 array('label' => $f, 'url' => Yii::app()->createUrl('site/index'),),
-                array('label' => 'Пожертвовать',
-                    'url' => Yii::app()->createUrl('gift/list')),
+                //array('label' => 'Пожертвовать',
+//                    'url' => Yii::app()->createUrl('gift/list')),
                 array('label' => 'Выпускники',
                     'url' => Yii::app()->createUrl('alumni/list')),
                 array('label' => 'Факультеты',

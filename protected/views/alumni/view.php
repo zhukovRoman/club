@@ -8,8 +8,9 @@ $lv = date("d/m/Y",  strtotime($model->lastVisit));
 $this->widget('bootstrap.widgets.TbDetailView', array(
     'data'=>array('workplace'=>$model->workplace,
         'mobile'=>$model->mobile,
-        'mail'=>$model->mail,
+        'mail'=>$model->contact_mail,
         'departmentID'=>$model->department->name,
+        
         'lastVisit'=>$lv),
     'attributes'=>array(
         array('name'=>'workplace', 'label'=>'Место работы'),
@@ -19,6 +20,8 @@ $this->widget('bootstrap.widgets.TbDetailView', array(
         array('name'=>'lastVisit', 'label'=>'Последний визит'),
     ),
 ));
+
+
 ?>
     
    
